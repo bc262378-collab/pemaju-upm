@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEMAJU | Portal Rasmi Fakulti Kejuruteraan UPM</title>
+<meta name="description" content="Portal contoh PEMAJU, Majlis Perwakilan Fakulti Kejuruteraan UPM.">
+<style>
+:root{
+ --maroon:#641D32; --navy:#172B45; --cocoa:#654536; --ivory:#F5F0E9;
+ --beige:#D8C6B5; --white:#fff; --ink:#25232a; --muted:#6f6a68;
+ --line:#e8dfd7; --shadow:0 14px 40px rgba(35,24,27,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.container{width:min(1160px,calc(100% - 40px));margin:auto}
+.topline{height:6px;background:linear-gradient(90deg,var(--maroon) 0 48%,var(--navy) 48% 78%,var(--cocoa) 78%)}
+header{position:sticky;top:0;z-index:20;background:rgba(100,29,50,.97);color:#fff;box-shadow:0 5px 22px #24151b22;backdrop-filter:blur(10px)}
+.navwrap{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.04em}
+.brandmark{height:42px;width:42px;border:1px solid #ffffff88;border-radius:12px;display:grid;place-items:center;font-family:Georgia,serif;font-size:20px}
+.brand small{display:block;font-size:9px;letter-spacing:.12em;color:#ead9dd;font-weight:600}
+nav{display:flex;align-items:center;gap:5px}
+nav a,.navdrop>button{border:0;background:transparent;color:#fff;padding:10px 11px;border-radius:8px;font-size:12px;font-weight:700;letter-spacing:.035em}
+nav a:hover,nav a.active,.navdrop>button:hover{background:#ffffff1b}
+.navdrop{position:relative}
+.dropmenu{display:none;position:absolute;top:100%;left:0;min-width:205px;background:white;color:var(--navy);padding:8px;border-radius:12px;box-shadow:var(--shadow)}
+.dropmenu a{display:block;color:var(--navy);padding:10px;border-radius:7px}
+.dropmenu a:hover{background:var(--ivory)}
+.navdrop:hover .dropmenu,.navdrop:focus-within .dropmenu{display:block}
+.menu-btn{display:none;background:transparent;color:white;border:1px solid #ffffff66;border-radius:8px;padding:8px 11px}
+.hero{background:var(--maroon);color:white;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:520px;height:520px;border:1px solid #ffffff20;border-radius:50%;right:-150px;top:-220px;box-shadow:0 0 0 55px #ffffff08,0 0 0 110px #ffffff06}
+.hero-inner{padding:90px 0 86px;position:relative;z-index:1;max-width:790px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.18em;color:#e8cbd3;text-transform:uppercase}
+.hero h1{font:700 clamp(42px,7vw,78px)/.99 Georgia,serif;letter-spacing:-.045em;margin:22px 0}
+.hero h1 span{color:#e4c4ce}
+.hero p{max-width:650px;color:#f3e7ea;font-size:17px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:8px;font-size:13px;font-weight:800;border:1px solid transparent;transition:.2s}
+.btn-light{background:var(--ivory);color:var(--maroon)}
+.btn-outline{border-color:#ffffff88;color:white}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px #0002}
+.hero-note{margin-top:42px;display:flex;gap:24px;flex-wrap:wrap;color:#ead9dd;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.ticker{background:var(--navy);color:white;padding:11px 0;font-size:11px;letter-spacing:.1em;font-weight:700}
+.ticker span{color:#d8c6b5;margin-right:12px}
+section{padding:76px 0}
+.section-kicker{color:var(--cocoa);font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:800}
+h2{font:700 clamp(30px,4vw,44px)/1.1 Georgia,serif;color:var(--maroon);margin:10px 0 14px;letter-spacing:-.025em}
+.lead{max-width:720px;color:var(--muted);margin:0 0 30px}
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:32px}
+.quick-card{background:white;border:1px solid var(--line);padding:22px;border-radius:13px;min-height:155px;transition:.2s;display:block}
+.quick-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#d4b8bf}
+.icon{height:42px;width:42px;border-radius:11px;background:#f3e8eb;color:var(--maroon);display:grid;place-items:center;font-size:21px;margin-bottom:17px}
+.quick-card strong{display:block;color:var(--navy);font-size:13px;letter-spacing:.04em}
+.quick-card small{display:block;color:var(--muted);margin-top:5px}
+.about-band{background:var(--navy);color:white}
+.about-band h2{color:white}
+.about-band .lead{color:#dce4ed}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.statbox{background:#ffffff0d;border:1px solid #ffffff24;border-radius:15px;padding:25px}
+.statbox strong{font:700 42px Georgia,serif;color:#e2c7ce;display:block}
+.statbox p{font-size:13px;color:#e0e7f0;margin:0}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+.pillar{border-left:3px solid var(--beige);padding:5px 0 5px 14px}
+.pillar b{display:block;font-size:13px}.pillar span{font-size:12px;color:#dce4ed}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.photo-placeholder{min-height:300px;border-radius:16px;background:linear-gradient(135deg,#172b45,#654536);color:white;padding:30px;display:flex;flex-direction:column;justify-content:end;position:relative;overflow:hidden}
+.photo-placeholder:before{content:"";position:absolute;width:280px;height:280px;border:1px solid #ffffff33;border-radius:50%;right:-40px;top:-55px;box-shadow:0 0 0 35px #ffffff0a,0 0 0 70px #ffffff08}
+.photo-placeholder>*{position:relative}
+.photo-placeholder strong{font:700 28px Georgia,serif}
+.photo-placeholder span{font-size:12px;color:#eee}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.news-card{background:white;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.news-image{height:150px;background:linear-gradient(135deg,var(--navy),#59718b);display:grid;place-items:center;color:white;font-size:12px;letter-spacing:.1em}
+.news-card:nth-child(2) .news-image{background:linear-gradient(135deg,var(--maroon),#a66c7d)}
+.news-card:nth-child(3) .news-image{background:linear-gradient(135deg,var(--cocoa),#b18b72)}
+.news-body{padding:19px}
+.tag{display:inline-block;font-size:9px;letter-spacing:.1em;font-weight:800;color:var(--maroon);background:#f4e9ec;padding:5px 8px;border-radius:20px}
+.news-body h3{font:700 19px Georgia,serif;color:var(--navy);margin:12px 0 7px}
+.news-body p{font-size:13px;color:var(--muted);margin:0}
+.linktext{display:inline-block;color:var(--maroon);font-size:12px;font-weight:800;margin-top:15px}
+.club-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.club{background:white;border:1px solid var(--line);border-radius:12px;padding:18px 14px;text-align:center}
+.club .clubnum{font:700 23px Georgia,serif;color:var(--maroon)}
+.club b{display:block;font-size:12px;color:var(--navy);margin-top:8px}
+.club small{font-size:10px;color:var(--muted)}
+.programme{background:#eee5dc}
+.program-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.program-item{background:white;border-radius:12px;padding:20px;border:1px solid #e6d8cd}
+.program-item .date{color:var(--maroon);font-size:10px;font-weight:800;letter-spacing:.1em}
+.program-item h3{font:700 18px Georgia,serif;color:var(--navy);margin:8px 0}
+.program-item p{font-size:12px;color:var(--muted);margin:0}
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.resource{padding:23px;background:white;border:1px solid var(--line);border-radius:13px}
+.resource .icon{background:#e9edf2;color:var(--navy)}
+.resource h3{font:700 18px Georgia,serif;color:var(--navy);margin:0 0 6px}
+.resource p{font-size:12px;color:var(--muted);margin:0}
+.faq-wrap{max-width:820px}
+details{background:white;border:1px solid var(--line);border-radius:10px;margin:10px 0;padding:0 18px}
+summary{cursor:pointer;list-style:none;padding:17px 24px 17px 0;font-size:14px;font-weight:700;color:var(--navy);position:relative}
+summary:after{content:"+";position:absolute;right:0;color:var(--maroon);font-size:20px;top:12px}
+details[open] summary:after{content:"−"}
+details p{font-size:13px;color:var(--muted);padding:0 0 16px;margin:0}
+.contact{background:var(--cocoa);color:white}
+.contact h2{color:white}.contact .lead{color:#eee1d9}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.contact-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.contact-links a{border:1px solid #ffffff66;padding:10px 13px;border-radius:8px;font-size:12px;font-weight:700}
+.contact-links a:hover{background:#ffffff18}
+.contact-panel{background:#ffffff12;border:1px solid #ffffff35;border-radius:14px;padding:24px}
+.contact-panel label{display:block;font-size:11px;margin:12px 0 5px;color:#f0e5df}
+.contact-panel input,.contact-panel textarea{width:100%;border:1px solid #ffffff55;background:#ffffff12;color:white;padding:11px;border-radius:7px;font:inherit}
+.contact-panel input::placeholder,.contact-panel textarea::placeholder{color:#e3d5ce}
+footer{background:#451321;color:white;padding:30px 0}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+footer small{color:#e7cfd6;font-size:11px}
+.notice{font-size:11px;color:#796d68;margin-top:18px}
+.backtop{position:fixed;right:20px;bottom:20px;background:var(--maroon);color:white;border:0;border-radius:50%;height:42px;width:42px;box-shadow:var(--shadow);display:none}
+@media(max-width:900px){
+ nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--maroon);padding:12px 20px 20px;flex-direction:column;align-items:stretch}
+ nav.open{display:flex}nav a,.navdrop>button{display:block;width:100%;text-align:left}
+ .dropmenu{position:static;box-shadow:none;margin:4px 0 0 12px;display:block}
+ .menu-btn{display:block}.quick-grid{grid-template-columns:repeat(2,1fr)}.club-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:650px){
+ .container{width:min(100% - 30px,1160px)}.hero-inner{padding:68px 0}
+ section{padding:56px 0}.about-grid,.split,.contact-grid{grid-template-columns:1fr;gap:25px}
+ .pillars{grid-template-columns:1fr}.news-grid,.programme .program-list,.resource-grid{grid-template-columns:1fr}
+ .club-grid{grid-template-columns:repeat(2,1fr)}.quick-grid{gap:10px}
+ .quick-card{padding:16px;min-height:140px}.statbox{padding:20px}
+}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+ <div class="container navwrap">
+  <a class="brand" href="#home" aria-label="PEMAJU Home">
+   <span class="brandmark">P</span><span>PEMAJU<small>FAKULTI KEJURUTERAAN UPM</small></span>
+  </a>
+  <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰ MENU</button>
+  <nav id="mainNav">
+   <a href="#home" class="active">HOME</a>
+   <div class="navdrop"><button type="button">ABOUT ▾</button><div class="dropmenu">
+    <a href="#about">About PEMAJU</a><a href="#clubs">10 Kelab Fakulti</a>
+   </div></div>
+   <div class="navdrop"><button type="button">INFORMATION ▾</button><div class="dropmenu">
+    <a href="#information">Panduan Mahasiswa</a><a href="#documents">Penyuratan & Dokumen</a>
+   </div></div>
+   <a href="#news">FK NEWS</a><a href="#programmes">PROGRAMMES</a>
+   <a href="#support">BANTUAN</a><a href="#wazan">WAZAN</a><a href="#faq">FAQ</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container hero-inner">
+  <div class="eyebrow">Majlis Perwakilan Fakulti Kejuruteraan · UPM</div>
+  <h1>YOUR FACULTY.<br><span>YOUR VOICE.</span><br>YOUR FUTURE.</h1>
+  <p>Platform rasmi mahasiswa untuk mendapatkan maklumat, mengikuti perkembangan fakulti dan mengakses sokongan serta peluang yang tersedia.</p>
+  <div class="actions">
+   <a class="btn btn-light" href="#about">KENALI PEMAJU ↗</a>
+   <a class="btn btn-outline" href="#support">AKSES BANTUAN</a>
+  </div>
+  <div class="hero-note"><span>● Student Representation</span><span>● Faculty Community</span><span>● Student Support</span></div>
+ </div>
+</section>
+<div class="ticker"><div class="container"><span>PEMAJU • UPM</span> PORTAL MAHASISWA FAKULTI KEJURUTERAAN — MAKLUMAT, KOMUNITI DAN KEBERDAYAAN MAHASISWA</div></div>
+
+<section id="explore">
+ <div class="container">
+  <div class="section-kicker">One-stop student portal</div>
+  <h2>Everything you need,<br>in one place.</h2>
+  <p class="lead">Terokai akses pantas kepada maklumat dan perkhidmatan penting untuk warga Fakulti Kejuruteraan.</p>
+  <div class="quick-grid">
+   <a class="quick-card" href="#about"><div class="icon">✦</div><strong>ABOUT PEMAJU</strong><small>Kenali peranan dan kepimpinan.</small></a>
+   <a class="quick-card" href="#clubs"><div class="icon">♧</div><strong>10 CLUBS</strong><small>Kenali kelab-kelab fakulti.</small></a>
+   <a class="quick-card" href="#information"><div class="icon">▤</div><strong>INFORMATION HUB</strong><small>Panduan komunikasi dan pemakaian.</small></a>
+   <a class="quick-card" href="#news"><div class="icon">▣</div><strong>FK NEWS</strong><small>Berita dan hebahan fakulti.</small></a>
+   <a class="quick-card" href="#programmes"><div class="icon">▦</div><strong>PROGRAMMES</strong><small>Takwim, laporan dan galeri.</small></a>
+   <a class="quick-card" href="#documents"><div class="icon">▧</div><strong>DOCUMENT CENTRE</strong><small>Template dan dokumen rasmi.</small></a>
+   <a class="quick-card" href="#support"><div class="icon">♡</div><strong>BANTUAN FK</strong><small>Saluran bantuan mahasiswa.</small></a>
+   <a class="quick-card" href="#wazan"><div class="icon">✧</div><strong>WAZAN & SCHOLARSHIP</strong><small>Biasiswa dan bantuan kewangan.</small></a>
+  </div>
+ </div>
+</section>
+
+<section class="about-band" id="about">
+ <div class="container about-grid">
+  <div>
+   <div class="section-kicker" style="color:#d8c6b5">Who we are</div>
+   <h2>A voice for every<br>engineering student.</h2>
+   <p class="lead">PEMAJU merupakan platform perwakilan mahasiswa yang berperanan sebagai penghubung antara pelajar dengan pihak fakulti. Kami berusaha memperjuangkan suara, kebajikan dan pembangunan komuniti mahasiswa.</p>
+   <div class="pillars">
+    <div class="pillar"><b>Perwakilan</b><span>Menyampaikan suara mahasiswa.</span></div>
+    <div class="pillar"><b>Kebajikan</b><span>Menghubungkan pelajar dengan sokongan.</span></div>
+    <div class="pillar"><b>Komuniti</b><span>Menggalakkan penglibatan dan kerjasama.</span></div>
+   </div>
+  </div>
+  <div class="statbox"><strong>PEMAJU</strong><p>Majlis Perwakilan Fakulti Kejuruteraan<br>Universiti Putra Malaysia</p><hr style="border:0;border-top:1px solid #ffffff33;margin:22px 0"><p><b style="color:#fff">YOUR FACULTY. YOUR VOICE. YOUR FUTURE.</b><br>Ruang untuk mahasiswa bersuara, berkembang dan bersama-sama membina komuniti fakulti.</p></div>
+ </div>
+</section>
+
+<section id="clubs">
+ <div class="container">
+  <div class="section-kicker">Student community</div><h2>Meet our clubs.</h2>
+  <p class="lead">Kenali 10 kelab di bawah Fakulti Kejuruteraan. Nama, logo dan pautan kelab boleh dikemas kini apabila senarai rasmi diterima.</p>
+  <div class="club-grid">
+   <div class="club"><div class="clubnum">01</div><b>Kelab 01</b><small>Nama rasmi kelab</small></div>
+   <div class="club"><div class="clubnum">02</div><b>Kelab 02</b><small>Nama rasmi kelab</small></div>
+   <div class="club"><div class="clubnum">03</div><b>Kelab 03</b><small>Nama rasmi kelab</small></div>
+   <div class="club"><div class="clubnum">04</div><b>Kelab 04</b><small>Nama rasmi kelab</small></div>
+   <div class="club"><div class="clubnum">05</div><b>Kelab 05</b><small>Nama rasmi kelab</small></div>
+   <div class="club"><div class="clubnum">06</div><b>Kelab 06</b><small>Nama rasmi kelab</small></div>
+   <div class="club"><div class="clubnum">07</div><b>Kelab 07</b><small>Nama rasmi kelab</small></div>
+   <div class="club"><div class="clubnum">08</div><b>Kelab 08</b><small>Nama rasmi kelab</small></div>
+   <div class="club"><div class="clubnum">09</div><b>Kelab 09</b><small>Nama rasmi kelab</small></div>
+   <div class="club"><div class="clubnum">10</div><b>Kelab 10</b><small>Nama rasmi kelab</small></div>
+  </div>
+ </div>
+</section>
+
+<section id="information" style="background:#fff">
+ <div class="container split">
+  <div>
+   <div class="section-kicker">Student information</div><h2>Know the right way.</h2>
+   <p class="lead">Rujukan ringkas untuk membantu mahasiswa berkomunikasi secara profesional dan menjaga imej sebagai warga universiti.</p>
+   <div class="resource" style="margin-bottom:12px"><h3>Penulisan e-mel rasmi</h3><p>Gunakan subjek yang jelas, salam pembuka, pengenalan diri, tujuan e-mel, bahasa sopan dan tandatangan lengkap.</p></div>
+   <div class="resource"><h3>Etika pemakaian</h3><p>Ikuti garis panduan pemakaian rasmi universiti dan arahan khusus bagi urusan, majlis atau aktiviti berkaitan.</p></div>
+  </div>
+  <div class="photo-placeholder"><span>STUDENT GUIDELINES</span><strong>Professionalism<br>starts with you.</strong><span>Panduan komunikasi dan penampilan mahasiswa.</span></div>
+ </div>
+</section>
+
+<section id="documents">
+ <div class="container">
+  <div class="section-kicker">Document centre</div><h2>Resources & templates.</h2>
+  <p class="lead">Pusat rujukan untuk format penyuratan dan dokumen program. Pautan muat turun sebenar boleh dimasukkan oleh pentadbir laman.</p>
+  <div class="resource-grid">
+   <div class="resource"><div class="icon">✉</div><h3>Surat rasmi</h3><p>Panduan format surat, alamat penerima, perkara dan penutup rasmi.</p><a class="linktext" href="#contact">Tambah pautan dokumen →</a></div>
+   <div class="resource"><div class="icon">▤</div><h3>Template kertas kerja</h3><p>Template cadangan program, objektif, tentatif dan anggaran perbelanjaan.</p><a class="linktext" href="#contact">Tambah pautan template →</a></div>
+   <div class="resource"><div class="icon">▧</div><h3>Laporan program</h3><p>Rangka laporan aktiviti, pencapaian, maklum balas dan dokumentasi.</p><a class="linktext" href="#programmes">Lihat program →</a></div>
+  </div>
+ </div>
+</section>
+
+<section class="programme" id="programmes">
+ <div class="container">
+  <div class="section-kicker">What's happening</div><h2>Programmes & activities.</h2>
+  <p class="lead">Ikuti takwim program dan laporan aktiviti PEMAJU serta komuniti Fakulti Kejuruteraan.</p>
+  <div class="program-list">
+   <div class="program-item"><div class="date">TAKWIM PROGRAM</div><h3>Program akan datang</h3><p>Masukkan tarikh, masa, lokasi dan pautan pendaftaran apabila hebahan rasmi tersedia.</p></div>
+   <div class="program-item"><div class="date">LAPORAN PROGRAM</div><h3>Sorotan aktiviti</h3><p>Ringkasan pelaksanaan program, penglibatan peserta dan hasil aktiviti.</p></div>
+   <div class="program-item"><div class="date">GALERI</div><h3>Memori bersama</h3><p>Koleksi gambar sepanjang program dan aktiviti warga fakulti.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="news">
+ <div class="container">
+  <div class="section-kicker">Faculty updates</div><h2>Latest from FK.</h2>
+  <p class="lead">Ruang hebahan berita fakulti, pengumuman penting dan pencapaian warga Kejuruteraan.</p>
+  <div class="news-grid">
+   <article class="news-card"><div class="news-image">FK NEWS · 01</div><div class="news-body"><span class="tag">PENGUMUMAN</span><h3>Hebahan Fakulti</h3><p>Masukkan tajuk dan ringkasan pengumuman rasmi fakulti di sini.</p><a href="#contact" class="linktext">Kemaskini berita →</a></div></article>
+   <article class="news-card"><div class="news-image">FK NEWS · 02</div><div class="news-body"><span class="tag">AKTIVITI</span><h3>Aktiviti Mahasiswa</h3><p>Kongsikan perkembangan aktiviti, program dan penglibatan mahasiswa.</p><a href="#contact" class="linktext">Kemaskini berita →</a></div></article>
+   <article class="news-card"><div class="news-image">FK NEWS · 03</div><div class="news-body"><span class="tag">PENCAPAIAN</span><h3>Kejayaan Warga FK</h3><p>Raikan pencapaian, inovasi dan kejayaan komuniti fakulti.</p><a href="#contact" class="linktext">Kemaskini berita →</a></div></article>
+  </div>
+ </div>
+</section>
+
+<section id="support" style="background:#fff">
+ <div class="container split">
+  <div>
+   <div class="section-kicker">Student welfare</div><h2>We're here to help.</h2>
+   <p class="lead">Halaman Bantuan FK menjadi pusat maklumat bagi mahasiswa yang memerlukan panduan berkaitan sokongan dan kebajikan.</p>
+   <div class="resource"><h3>Bantuan Fakulti Kejuruteraan</h3><p>Masukkan penerangan bantuan, kriteria asas, dokumen yang diperlukan dan saluran pertanyaan yang disahkan oleh pihak berkaitan.</p><a class="linktext" href="#contact">Maklumat permohonan →</a></div>
+   <p class="notice">Nota: Maklumat bantuan dan kelayakan hendaklah disahkan dengan pihak fakulti sebelum diterbitkan.</p>
+  </div>
+  <div class="photo-placeholder" style="background:linear-gradient(135deg,#641D32,#172B45)"><span>STUDENT SUPPORT</span><strong>Support that<br>makes a difference.</strong><span>QR permohonan boleh diletakkan di ruang ini.</span></div>
+ </div>
+</section>
+
+<section id="wazan">
+ <div class="container">
+  <div class="section-kicker">Financial assistance</div><h2>WAZAN & scholarship.</h2>
+  <p class="lead">Terokai maklumat bantuan kewangan, biasiswa dan peluang penajaan untuk membantu mahasiswa merancang perjalanan akademik.</p>
+  <div class="resource-grid">
+   <div class="resource"><div class="icon">✧</div><h3>WAZAN</h3><p>Maklumat bantuan melalui saluran rasmi WAZAN. Sila rujuk pengumuman dan syarat semasa.</p><a class="linktext" href="https://wazan.upm.edu.my/" target="_blank" rel="noopener">Laman rasmi WAZAN ↗</a></div>
+   <div class="resource"><div class="icon">◇</div><h3>Biasiswa</h3><p>Senarai peluang biasiswa, tarikh tutup dan syarat kelayakan yang telah disahkan.</p><a class="linktext" href="#contact">Tambah senarai biasiswa →</a></div>
+   <div class="resource"><div class="icon">♡</div><h3>Bantuan kewangan</h3><p>Rujukan saluran bantuan dan pihak yang boleh dihubungi untuk pertanyaan.</p><a class="linktext" href="#support">Lihat bantuan FK →</a></div>
+  </div>
+ </div>
+</section>
+
+<section id="faq" style="background:#eee5dc">
+ <div class="container faq-wrap">
+  <div class="section-kicker">Need to know</div><h2>Frequently asked questions.</h2>
+  <p class="lead">Jawapan ringkas untuk membantu anda menggunakan portal PEMAJU.</p>
+  <details><summary>Apakah itu PEMAJU?</summary><p>PEMAJU ialah Majlis Perwakilan Fakulti Kejuruteraan yang menjadi platform perwakilan dan penghubung suara mahasiswa.</p></details>
+  <details><summary>Bagaimana untuk menghubungi PEMAJU?</summary><p>Hubungi PEMAJU melalui e-mel rasmi atau akaun media sosial rasmi yang akan dipautkan pada bahagian Contact.</p></details>
+  <details><summary>Di manakah saya boleh mendapatkan template kertas kerja?</summary><p>Layari bahagian Document Centre untuk mendapatkan pautan template dan dokumen yang disediakan.</p></details>
+  <details><summary>Bagaimana untuk mendapatkan bantuan FK?</summary><p>Layari bahagian Bantuan FK dan ikuti saluran permohonan rasmi selepas maklumat serta QR disahkan.</p></details>
+  <details><summary>Di manakah maklumat biasiswa dan WAZAN?</summary><p>Rujuk bahagian WAZAN & Scholarship dan pautan rasmi penyedia bantuan untuk maklumat terkini.</p></details>
+  <details><summary>Bagaimana saya boleh memberi maklum balas?</summary><p>Gunakan saluran e-mel atau Google Form rasmi yang akan ditambah pada portal apabila pautannya tersedia.</p></details>
+  <a class="btn" style="background:var(--maroon);color:white;margin-top:18px" href="#contact">HANTAR PERTANYAAN ↗</a>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="container contact-grid">
+  <div>
+   <div class="section-kicker" style="color:#e1cabb">Stay connected</div><h2>Connect with PEMAJU.</h2>
+   <p class="lead">Ikuti saluran rasmi PEMAJU untuk mendapatkan perkembangan terkini, hebahan program dan maklumat penting.</p>
+   <div class="contact-links">
+    <a href="#" onclick="placeholderAlert(event,'Instagram PEMAJU')">◎ Instagram</a>
+    <a href="#" onclick="placeholderAlert(event,'TikTok PEMAJU')">♪ TikTok</a>
+    <a href="mailto:">✉ E-mel</a>
+   </div>
+   <p class="notice" style="color:#eadbd3">Pautan media sosial dan e-mel rasmi perlu dikemas kini sebelum laman diterbitkan.</p>
+  </div>
+  <form class="contact-panel" id="demoForm">
+   <h3 style="font:700 23px Georgia,serif;margin:0">Send an enquiry</h3>
+   <p style="font-size:12px;color:#eadbd3;margin:4px 0 15px">Contoh borang paparan sahaja — belum disambungkan ke Google Forms.</p>
+   <label for="name">Nama</label><input id="name" required placeholder="Nama anda">
+   <label for="email">E-mel</label><input id="email" type="email" required placeholder="nama@email.com">
+   <label for="message">Pertanyaan</label><textarea id="message" rows="3" required placeholder="Tulis pertanyaan anda..."></textarea>
+   <button class="btn btn-light" style="margin-top:15px" type="submit">HANTAR PERTANYAAN</button>
+  </form>
+ </div>
+</section>
+</main>
+<footer>
+ <div class="container footer-row">
+  <div><strong style="font:700 24px Georgia,serif">PEMAJU.</strong><br><small>Majlis Perwakilan Fakulti Kejuruteraan · UPM</small></div>
+  <small>© <span id="year"></span> PEMAJU. YOUR FACULTY. YOUR VOICE. YOUR FUTURE.</small>
+ </div>
+</footer>
+<button class="backtop" id="backTop" aria-label="Kembali ke atas">↑</button>
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.getElementById('mainNav');
+menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+document.getElementById('year').textContent=new Date().getFullYear();
+const backTop=document.getElementById('backTop');
+window.addEventListener('scroll',()=>{backTop.style.display=window.scrollY>450?'block':'none'});
+backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+document.getElementById('demoForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ alert('Terima kasih! Ini borang demo sahaja. Sambungkan Google Form rasmi sebelum laman diterbitkan.');
+ e.target.reset();
+});
+function placeholderAlert(e,label){e.preventDefault();alert('Pautan '+label+' belum dimasukkan. Kemaskini pautan rasmi sebelum laman diterbitkan.')}
+const sections=[...document.querySelectorAll('main section[id]')];
+const links=[...document.querySelectorAll('nav a[href^="#"]')];
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>link.classList.toggle('active',link.getAttribute('href')==='#'+entry.target.id))}});
+},{rootMargin:'-35% 0px -55% 0px'});
+sections.forEach(section=>observer.observe(section));
+</script>
+</body>
+</html>
